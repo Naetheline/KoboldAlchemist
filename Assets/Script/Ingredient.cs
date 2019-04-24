@@ -111,6 +111,10 @@ public class Ingredient : System.Object
         name += (kill >= NAME_THRESHOLD) ? "caustic " : "";
         name += (grow >= NAME_THRESHOLD) ? "glowing " : "";
         name += (alter >= NAME_THRESHOLD) ? "strange looking " : "";
+        name += (makeSmell <= -NAME_THRESHOLD) ? "inodorous " : "";
+        name += (kill <= -NAME_THRESHOLD) ? "viscous " : "";
+        name += (grow <= -NAME_THRESHOLD) ? "thick " : "";
+        name += (alter <= -NAME_THRESHOLD) ? "surprisingly clear " : "";
         name += "liquid.";
 
     }
