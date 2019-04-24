@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 [System.Serializable]
@@ -107,15 +108,7 @@ public class Ingredient : System.Object
         this.colour = this.colour + toMix.colour;
 
         name = "";
-        name += (makeSmell >= NAME_THRESHOLD) ? "smelly " : "";
-        name += (kill >= NAME_THRESHOLD) ? "caustic " : "";
-        name += (grow >= NAME_THRESHOLD) ? "glowing " : "";
-        name += (alter >= NAME_THRESHOLD) ? "strange looking " : "";
-        name += (makeSmell <= -NAME_THRESHOLD) ? "inodorous " : "";
-        name += (kill <= -NAME_THRESHOLD) ? "viscous " : "";
-        name += (grow <= -NAME_THRESHOLD) ? "thick " : "";
-        name += (alter <= -NAME_THRESHOLD) ? "surprisingly clear " : "";
-        name += "liquid.";
+        name += GenerateName();
 
     }
 
@@ -132,7 +125,7 @@ public class Ingredient : System.Object
 
         this.colour = colour * HEAT_MODIFICATOR;
 
-        this.name = "heated " + name;
+        this.name = "heated " + GenerateName();
     }
 
     public void Cool()
@@ -148,11 +141,27 @@ public class Ingredient : System.Object
 
         colour = colour * COLD_MODIFICATOR;
 
-        this.name = "cool " + name;
+        this.name = "cool " + GenerateName();
     }
 
     public Color GetColour()
     {
         return colour;
+    }
+
+    private string GenerateName()
+    {
+        StringBuilder newName = new StringBuilder(); ;
+        newName.Append( (makeSmell >= NAME_THRESHOLD) ? "smelly " : "");
+        newName.Append((kill >= NAME_THRESHOLD) ? "caustic " : "");
+        newName.Append((grow >= NAME_THRESHOLD) ? "glowing " : "");
+        newName.Append((alter >= NAME_THRESHOLD) ? "strange looking " : "");
+        newName.Append((makeSmell <= -NAME_THRESHOLD) ? "inodorous " : "");
+        newName.Append((kill <= -NAME_THRESHOLD) ? "viscous " : "");
+        newName.Append((grow <= -NAME_THRESHOLD) ? "thick " : "");
+        newName.Append((alter <= -NAME_THRESHOLD) ? "surprisingly clear " : "");
+        newName.Append("liquid.");
+
+        return newName.ToString();
     }
 }
