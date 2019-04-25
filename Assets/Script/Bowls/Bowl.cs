@@ -9,6 +9,11 @@ public class Bowl : MonoBehaviour
     [SerializeField]
     protected Ingredient content;
 
+    private void Start()
+    {
+        content = null;
+    }
+
     public virtual void SetContent(Ingredient ingredient)
     {
         content = ingredient;

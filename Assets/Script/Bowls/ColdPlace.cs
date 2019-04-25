@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ColdPlace : Bowl
 {
+
     public override void Process(Ingredient toMix)
     {
         this.content.Cool();
