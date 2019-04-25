@@ -17,7 +17,7 @@ public class CausticVolatileGrog : Bowl
 
     public override Ingredient getIngredient()
     {
-        return this.content;
+        return new Ingredient(this.content);
     }
 
     public override string printIngredient()

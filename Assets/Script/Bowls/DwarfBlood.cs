@@ -16,7 +16,7 @@ public class DwarfBlood : Bowl
 
     public override Ingredient getIngredient()
     {
-        return content;
+        return new Ingredient(this.content);
     }
     
     public override string printIngredient()
