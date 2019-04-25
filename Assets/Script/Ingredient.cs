@@ -58,25 +58,6 @@ public class Ingredient : System.Object
         name = copy.name;
     }
 
-
-
-    public Ingredient(int e, int ha, int ho, int f, int ms, int k, int g, int a)
-    {
-        ear = e;
-        hair = ha;
-        horn = ho;
-        feet = f;
-        makeSmell = ms;
-        kill = k;
-        grow = g;
-        alter = a;
-
-        colour = Color.magenta;
-        name = "It's magenta...";
-    }
-
-
-
     public Ingredient(int e, int ha, int ho, int f, int ms, int k, int g, int a, Color c, string newName)
     {
         ear = e;
@@ -107,6 +88,9 @@ public class Ingredient : System.Object
 
         this.colour = this.colour + toMix.colour;
 
+        RandomizeColourIfWhite();
+
+
         name = "";
         name += GenerateName();
 
@@ -124,6 +108,7 @@ public class Ingredient : System.Object
         alter = (int)(alter * HEAT_MODIFICATOR);
 
         this.colour = colour * HEAT_MODIFICATOR;
+        RandomizeColourIfWhite();
 
         this.name = "heated " + GenerateName();
     }
@@ -140,6 +125,7 @@ public class Ingredient : System.Object
         alter = (int)(alter * COLD_MODIFICATOR);
 
         colour = colour * COLD_MODIFICATOR;
+        RandomizeColourIfWhite();
 
         this.name = "cool " + GenerateName();
     }
@@ -148,6 +134,15 @@ public class Ingredient : System.Object
     {
         return colour;
     }
+
+    private void RandomizeColourIfWhite()
+    {
+        if(colour.Equals(Color.white))
+        {
+            colour = Random.ColorHSV(0f, 1f, 0f, 0.8f, 0f, 1f);
+        }
+    }
+
 
     private string GenerateName()
     {

@@ -6,7 +6,7 @@ public class DwarfBlood : Bowl
 {
     public void Start()
     {
-       content = new Ingredient(0, 8, 0, 0, 7, 0, 0, 0, Color.red, "Dwarf blood");
+       content = new Ingredient(0, 8, 0, 0, 7, 0, 0, 0, new Color(0.3f, 0, 0 ), "Dwarf blood");
     }
 
     public override void SetContent(Ingredient ingredient)

@@ -6,7 +6,7 @@ public class MarangTea : Bowl
 {
     private void Start()
     {
-        this.content = new Ingredient(0, 0, -7, 0, 0, 0, 0, 8, new Color(0, 0.3f, 0.3f), "Marang tea");
+        this.content = new Ingredient(0, 0, -7, 0, 0, 0, 0, 8, new Color(0.2f, 0, 0.2f), "Marang tea");
     }
 
     public override void SetContent(Ingredient ingredient)

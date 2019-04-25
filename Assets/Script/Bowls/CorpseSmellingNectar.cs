@@ -7,7 +7,7 @@ public class CorpseSmellingNectar : Bowl
 
     private void Start()
     {
-        this.content = new Ingredient(0, 0, 0, 0, 0, 8, 0, -3, new Color(0.3f, 0.1f, 0), "Corpse smelling nectar");
+        this.content = new Ingredient(0, 0, 0, 0, 0, 8, 0, -3, new Color(0.1f, 0.1f, 0), "Corpse smelling nectar");
     }
 
     public override void SetContent(Ingredient ingredient)
