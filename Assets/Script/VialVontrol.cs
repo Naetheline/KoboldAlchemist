@@ -23,6 +23,11 @@ public class VialVontrol : MonoBehaviour
         }
     }
 
+    public Ingredient getCurrentIngredient()
+    {
+        return currentIngredient;
+    }
+
     public void clearIngredient()
     {
         currentIngredient = null;

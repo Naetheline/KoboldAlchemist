@@ -164,4 +164,21 @@ public class Ingredient : System.Object
 
         return newName.ToString();
     }
+
+    public override string ToString()
+    {
+        StringBuilder newName = new StringBuilder();
+        newName.Append(GenerateName());
+        newName.Append("\nEars : " + this.ear);
+        newName.Append("\nHair : " + this.hair);
+        newName.Append("\nHorn : " + this.horn);
+        newName.Append("\nFeet : " + this.feet);
+        newName.Append("\nMake Smel : " + this.makeSmell);
+        newName.Append("\nKill : "  + this.kill);
+        newName.Append("\nGrow : "+ this.grow);
+        newName.Append("\nAlter : " + this.alter);
+        
+
+        return newName.ToString();
+    }
 }

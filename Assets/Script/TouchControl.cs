@@ -8,7 +8,7 @@ public class TouchControl : MonoBehaviour
     public GameObject tooltip;
     public TextMeshProUGUI tooltipText;
 
-   private VialVontrol vial;
+    private VialVontrol vial;
     private void Start()
     {
         vial = GameObject.Find("vial").GetComponent<VialVontrol>();
@@ -28,8 +28,9 @@ public class TouchControl : MonoBehaviour
             }
             Bowl bowl = hit.collider.GetComponent<Bowl>();
             VialVontrol vialToprint = hit.collider.GetComponent<VialVontrol>();
+            ResultManager result = hit.collider.GetComponent<ResultManager>();
             if (touch.phase == TouchPhase.Ended)
-                {
+            {
                 
                     if (vial.isEmpty() && bowl != null)
                     {
@@ -38,19 +39,34 @@ public class TouchControl : MonoBehaviour
 
                     tooltip.SetActive(false);
 
-                }
-                else if (touch.phase == TouchPhase.Stationary)
-                {      
-                    if(bowl != null)
-                    {
+            }
+            else if (touch.phase == TouchPhase.Stationary)
+            {      
+                if(bowl != null)
+                {
                         tooltipText.text = bowl.printIngredient();
-                    }
-                    else if (vialToprint != null)
-                    {
+                }
+                else if (vialToprint != null)
+                {
                     tooltipText.text = vialToprint.printIngredient();
                 }
                     tooltip.SetActive(true);
+            }
+            else if (touch.phase == TouchPhase.Began)
+            {
+                if (result != null)
+                {
+                    if (vial.isEmpty())
+                    {
+                        result.HideResult();
+                    }
+                    else
+                    {
+                        result.CheckPotion(vial.getCurrentIngredient());
+                        vial.clearIngredient();
+                    }
                 }
+            }
             
         }
     }
