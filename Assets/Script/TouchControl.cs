@@ -8,10 +8,10 @@ public class TouchControl : MonoBehaviour
     public GameObject tooltip;
     public TextMeshProUGUI tooltipText;
 
-    private VialVontrol vial;
+    private VialControl vial;
     private void Start()
     {
-        vial = GameObject.Find("vial").GetComponent<VialVontrol>();
+        vial = GameObject.Find("vial").GetComponent<VialControl>();
     }
 
 
@@ -27,7 +27,7 @@ public class TouchControl : MonoBehaviour
                 return;
             }
             Bowl bowl = hit.collider.GetComponent<Bowl>();
-            VialVontrol vialToprint = hit.collider.GetComponent<VialVontrol>();
+            VialControl vialToprint = hit.collider.GetComponent<VialControl>();
             ResultManager result = hit.collider.GetComponent<ResultManager>();
             if (touch.phase == TouchPhase.Ended)
             {

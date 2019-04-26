@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VialVontrol : MonoBehaviour
+public class VialControl : MonoBehaviour
 {
     public const float ROTATION_THRESHOLD = 120f;
     private Ingredient currentIngredient;
