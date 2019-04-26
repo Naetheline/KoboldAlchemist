@@ -137,7 +137,7 @@ public class Ingredient : System.Object
 
     private void RandomizeColourIfWhite()
     {
-        if(colour.Equals(Color.white))
+        while(colour.r >= 0.8f && colour.g >= 0.8f && colour.b >= 0.8f)
         {
             colour = Random.ColorHSV(0f, 1f, 0f, 0.8f, 0f, 1f);
         }
