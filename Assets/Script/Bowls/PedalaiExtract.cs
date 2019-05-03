@@ -7,7 +7,7 @@ public class PedalaiExtract : Bowl
 
     private void Start()
     {
-        this.content = new Ingredient(0, 0, 0, -3, 0, 0, -6, 0, new Color(0.1f, 0.1f, 0.1f), "Pedalai extract");
+        this.content = new Ingredient(0, 0, -3, 0, -3, 0, new Color(0.1f, 0.1f, 0.1f), "Pedalai extract");
     }
 
     public override void SetContent(Ingredient ingredient)

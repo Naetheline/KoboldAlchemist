@@ -6,7 +6,7 @@ public class DragonMucus : Bowl
 {
     private void Start()
     {
-        this.content = new Ingredient(0, -6, 6, 0, 0, 0, 0, 0, new Color(0, 0.3f, 0), "Dragon mucus");
+        this.content = new Ingredient(0, 5, 0, 0, 0, -5, new Color(0, 0.3f, 0), "Dragon mucus");
     }
 
     public override void SetContent(Ingredient ingredient)

@@ -7,7 +7,7 @@ public class CausticVolatileGrog : Bowl
 
     private void Start()
     {
-       this.content = new Ingredient(-5, 0, 0, 0, 0, 0, 0, 8, Color.black, "Caustic volatile grog !");
+       this.content = new Ingredient(-5, 0, 0, 0, 0, 5, Color.black, "Caustic volatile grog !");
     }
 
     public override void SetContent(Ingredient ingredient)

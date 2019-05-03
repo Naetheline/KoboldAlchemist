@@ -6,7 +6,7 @@ public class OldFridgeCondensation : Bowl
 {
     private void Start()
     {
-        this.content = new Ingredient(0, 0, 0, 0, 0, -3, 6, 0, Color.cyan, "Old fridge condensation");
+        this.content = new Ingredient(-3, 0, 0, 0, 5,  0, Color.cyan, "Old fridge condensation");
     }
 
     public override void SetContent(Ingredient ingredient)

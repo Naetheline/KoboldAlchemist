@@ -6,7 +6,7 @@ public class UndYellowLiquid : Bowl
 {
     private void Start()
     {
-        this.content = new Ingredient(0, 0, 0, 0, 7, 0, 0, 5, Color.yellow, "Some undefined yellow liquid...");
+        this.content = new Ingredient(0, -3, 0, 5, 0, 0,  Color.yellow, "Some undefined yellow liquid...");
     }
 
     public override void SetContent(Ingredient ingredient)

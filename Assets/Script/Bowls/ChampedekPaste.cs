@@ -6,7 +6,7 @@ public class ChampedekPaste : Bowl
 {
     private void Start()
     {
-        this.content = new Ingredient(0, 0, 0, 0, -4, -6, 0, 0, new Color(0, 0.1f, 0), "Champedek oil");
+        this.content = new Ingredient(-5, 0, 0, -5, 0, 0, new Color(0, 0.1f, 0), "Champedek oil");
     }
 
     public override void SetContent(Ingredient ingredient)

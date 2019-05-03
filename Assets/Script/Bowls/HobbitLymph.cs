@@ -6,7 +6,7 @@ public class HobbitLymph : Bowl
 {
     private void Start()
     {
-        this.content = new Ingredient(0, 0, 0, 7, 0, 0, -7, 0, new Color(0.3f, 0.3f, 0.3f), "Hobbit lymph");
+        this.content = new Ingredient(0, 0, 5, 0, -5, 0, new Color(0.3f, 0.3f, 0.3f), "Hobbit lymph");
     }
 
     public override void SetContent(Ingredient ingredient)

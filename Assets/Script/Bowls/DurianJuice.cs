@@ -6,7 +6,7 @@ public class DurianJuice : Bowl
 {
     private void Start()
     {
-        this.content = new Ingredient(0, 0, 0, 0, -3, 4, 0, 0,new Color(0.5f, 0.1f, 0.1f), "Durian juice");
+        this.content = new Ingredient(0, 3, 0,-3, 0, 0, new Color(0.5f, 0.1f, 0.1f), "Durian juice");
     }
 
     public override void SetContent(Ingredient ingredient)
