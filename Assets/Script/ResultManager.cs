@@ -50,7 +50,7 @@ public class ResultManager : MonoBehaviour
         sb.Append("\n\nMake smell : " + makeSmell );
         sb.Append("\nGrow : " + grow);
         sb.Append("\nAlter : " + alter );
-        sb.Append("\n");
+        sb.Append("\n\n");
 
 
         textResult.text = sb.ToString() + potion.ToString();
@@ -59,6 +59,9 @@ public class ResultManager : MonoBehaviour
         if(ear && horn && feet && makeSmell && grow && alter)
         {
             textResult.text += "\n\tVictory !";
+
+            // TODO 
+            // Add some sort of score
 
             condition = new VictoryCondition();
 

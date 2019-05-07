@@ -65,9 +65,12 @@ public class VictoryCondition
         sb.Append("\n to be \n");
         // TODO
 
-        sb.Append("make smell " + makeSmell.ToString());
-        sb.Append("\ngrow " + grow.ToString());
-        sb.Append("\nalter " + alter.ToString());
+        sb.Append( (Mathf.Abs(makeSmell) == 2) ? "a lot": "");
+        sb.Append((Mathf.Sign(makeSmell) == -1) ? "less smelly" : "more smelly");
+        sb.Append((Mathf.Abs(grow) == 2) ? "a lot" : "");
+        sb.Append((Mathf.Sign(grow) == -1) ? "smaller" : "bigger");
+        sb.Append((Mathf.Abs(alter) == 2) ? "a lot" : "");
+        sb.Append((Mathf.Sign(alter) == -1) ? "less colourful" : "more colourful");
 
         return sb.ToString();
 
