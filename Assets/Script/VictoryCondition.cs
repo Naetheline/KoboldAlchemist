@@ -27,13 +27,17 @@ public class VictoryCondition
 
     public VictoryCondition()
     {
-        ear = Mathf.RoundToInt(Random.Range(-1, 1));
-        horn = Mathf.RoundToInt(Random.Range(-1, 1));
-        feet = Mathf.RoundToInt(Random.Range(-1, 1));
+        do
+        {
+            ear = Mathf.RoundToInt(Random.Range(-1, 1));
+            horn = Mathf.RoundToInt(Random.Range(-1, 1));
+            feet = Mathf.RoundToInt(Random.Range(-1, 1));
 
-        makeSmell = Mathf.RoundToInt(Random.Range(-2, 2));
-        grow = Mathf.RoundToInt(Random.Range(-2, 2));
-        alter = Mathf.RoundToInt(Random.Range(-2, 2));
+            makeSmell = Mathf.RoundToInt(Random.Range(-2, 2));
+            grow = Mathf.RoundToInt(Random.Range(-2, 2));
+            alter = Mathf.RoundToInt(Random.Range(-2, 2));
+        }
+        while ((ear == 0 && horn == 0 && feet == 0) || (makeSmell == 0 && grow == 0 && alter == 0));
 
     }
 
