@@ -44,9 +44,9 @@ public class ResultManager : MonoBehaviour
             return;
         }
 
-        bool ear = checkAttribut(currentCondition.Ear, potion.Ear);
-        bool horn = checkAttribut(currentCondition.Horn, potion.Horn);
-        bool feet = checkAttribut(currentCondition.Feet, potion.Feet);
+        bool ear = checkBodyPart(currentCondition.Ear, potion.Ear);
+        bool horn = checkBodyPart(currentCondition.Horn, potion.Horn);
+        bool feet = checkBodyPart(currentCondition.Feet, potion.Feet);
 
         bool makeSmell = checkAttribut(currentCondition.MakeSmell, potion.MakeSmell);
         bool grow = checkAttribut(currentCondition.Grow, potion.Grow);
@@ -56,8 +56,6 @@ public class ResultManager : MonoBehaviour
         {
             textResult.text += "It worked, thank you !";
 
-            // TODO 
-            // Add some sort of score
             level++;
             if (level > NUMBER_LEVELS)
             {
@@ -81,6 +79,18 @@ public class ResultManager : MonoBehaviour
     {
         resultPanel.SetActive(false);
         condPanel.SetActive(true);
+    }
+
+    private bool checkBodyPart(int conditionAttribute, float potionAttribute)
+    {
+        switch (conditionAttribute)
+        {
+       
+            case -1: return (potionAttribute <= -VictoryCondition.EFFECT);
+            case 0: return (potionAttribute > -VictoryCondition.EFFECT);
+            case 1: return (potionAttribute >= VictoryCondition.EFFECT); 
+            default: return false;
+        }
     }
 
     private bool checkAttribut(int conditionAttribute, float potionAttribute)
