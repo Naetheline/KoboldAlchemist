@@ -31,8 +31,6 @@ public class ResultManager : MonoBehaviour
             return;
         }
 
-        StringBuilder sb = new StringBuilder();
-
         bool ear = checkAttribut(condition.Ear, potion.Ear);
         bool horn = checkAttribut(condition.Horn, potion.Horn);
         bool feet = checkAttribut(condition.Feet, potion.Feet);
@@ -40,8 +38,6 @@ public class ResultManager : MonoBehaviour
         bool makeSmell = checkAttribut(condition.MakeSmell, potion.MakeSmell);
         bool grow = checkAttribut(condition.Grow, potion.Grow);
         bool alter = checkAttribut(condition.Alter, potion.Alter);
-
-        //textResult.text = sb.ToString() + potion.ToString();
         
         if(ear && horn && feet && makeSmell && grow && alter)
         {
@@ -56,22 +52,9 @@ public class ResultManager : MonoBehaviour
         }
         else
         {
-            // TODO
-            // Find a way to words the results in a correct english sentence...
-            sb.Append("Ears : " + ear);
-            sb.Append("\nHorns : " + horn);
-            sb.Append("\nFeet : " + feet);
-
-            sb.Append("\n\nMake smell : " + makeSmell);
-            sb.Append("\nGrow : " + grow);
-            sb.Append("\nAlter : " + alter);
-            sb.Append("\n\n");
-
+            textResult.text = AttributePotion(potion);
         }
-
-
         resultPanel.SetActive(true);
-
     }
 
     public void HideResult()
@@ -95,8 +78,6 @@ public class ResultManager : MonoBehaviour
     private string AttributePotion(Ingredient potion)
     {
         StringBuilder sb = new StringBuilder();
-
-
         sb.Append("It made my \n");
 
         sb.Append((potion.Ear >= VictoryCondition.EFFECT) ? "ears " : "");
