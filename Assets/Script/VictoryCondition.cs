@@ -40,6 +40,15 @@ public class VictoryCondition
         while ((ear == 0 && horn == 0 && feet == 0) || (makeSmell == 0 && grow == 0 && alter == 0));
 
     }
+    public VictoryCondition(int e, int h, int f, int ms, int g, int a)
+    {
+        ear = e;
+        horn = h;
+        feet = f;
+        makeSmell = ms;
+        grow = g;
+        alter = a;
+    }
 
     public int Ear { get => ear;  }
     public int Horn { get => horn;  }

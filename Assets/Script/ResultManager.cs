@@ -6,22 +6,35 @@ using UnityEngine;
 
 public class ResultManager : MonoBehaviour
 {
+    public const int NUMBER_LEVELS = 10;
+
     [SerializeField]
     private GameObject resultPanel;
     [SerializeField]
     private TextMeshProUGUI textResult;
 
     [SerializeField]
+    private GameObject condPanel;
+
+    [SerializeField]
     private TextMeshProUGUI textCondition;
 
 
+    private VictoryCondition currentCondition;
 
-    private VictoryCondition condition;
+    private VictoryCondition[] conditions;
+
+    private int level;
 
     private void Start()
     {
-        this.condition = new VictoryCondition();
-        textCondition.text = condition.ToString();
+        conditions = new VictoryCondition[NUMBER_LEVELS];
+
+        GenerateVictoryConditions();
+
+        level = 0;
+        this.currentCondition = conditions[level];
+        textCondition.text = currentCondition.ToString();
     }
 
     public void CheckPotion(Ingredient potion)
@@ -31,13 +44,13 @@ public class ResultManager : MonoBehaviour
             return;
         }
 
-        bool ear = checkAttribut(condition.Ear, potion.Ear);
-        bool horn = checkAttribut(condition.Horn, potion.Horn);
-        bool feet = checkAttribut(condition.Feet, potion.Feet);
+        bool ear = checkAttribut(currentCondition.Ear, potion.Ear);
+        bool horn = checkAttribut(currentCondition.Horn, potion.Horn);
+        bool feet = checkAttribut(currentCondition.Feet, potion.Feet);
 
-        bool makeSmell = checkAttribut(condition.MakeSmell, potion.MakeSmell);
-        bool grow = checkAttribut(condition.Grow, potion.Grow);
-        bool alter = checkAttribut(condition.Alter, potion.Alter);
+        bool makeSmell = checkAttribut(currentCondition.MakeSmell, potion.MakeSmell);
+        bool grow = checkAttribut(currentCondition.Grow, potion.Grow);
+        bool alter = checkAttribut(currentCondition.Alter, potion.Alter);
         
         if(ear && horn && feet && makeSmell && grow && alter)
         {
@@ -45,21 +58,29 @@ public class ResultManager : MonoBehaviour
 
             // TODO 
             // Add some sort of score
+            level++;
+            if (level > NUMBER_LEVELS)
+            {
+                level = 0;
+            }
 
-            condition = new VictoryCondition();
+            currentCondition = conditions[level];
 
-            textCondition.text = condition.ToString();
+            textCondition.text = currentCondition.ToString();
         }
         else
         {
             textResult.text = AttributePotion(potion);
         }
         resultPanel.SetActive(true);
+        condPanel.SetActive(false);
+        
     }
 
     public void HideResult()
     {
         resultPanel.SetActive(false);
+        condPanel.SetActive(true);
     }
 
     private bool checkAttribut(int conditionAttribute, float potionAttribute)
@@ -97,5 +118,20 @@ public class ResultManager : MonoBehaviour
         sb.Append((potion.Alter <= -VictoryCondition.EFFECT) ? "less colourful." : ((potion.Alter >= VictoryCondition.EFFECT) ? "more colourful." :""));
 
         return sb.ToString();
+    }
+
+
+    private void GenerateVictoryConditions()
+    {
+        conditions[0] = new VictoryCondition(0, 0, 1, 0, -1, 0);
+        conditions[1] = new VictoryCondition(1, 0, 0, 0, 2, 0);
+        conditions[2] = new VictoryCondition(0, 0, -1, -2, 0, 0);
+        conditions[3] = new VictoryCondition(0, 1, 0, 0, 0, -1);
+        conditions[4] = new VictoryCondition(-1, 0, 0, 0, 1, 1);
+        conditions[5] = new VictoryCondition(0, -1, 0, 1, 0, 0);
+        conditions[6] = new VictoryCondition(-1, -1, 1, 0, 0, 2);
+        conditions[7] = new VictoryCondition(0, 0, -1, -1, 0, 0);
+        conditions[8] = new VictoryCondition(0, 1, 0, 0, 0, -2);
+        conditions[9] = new VictoryCondition(0, 0, 1, 0, -2, 0);
     }
 }
