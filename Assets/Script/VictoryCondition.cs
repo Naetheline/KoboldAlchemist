@@ -72,14 +72,14 @@ public class VictoryCondition
         sb.Append((feet == -1) ? ((ear != 0 || horn != 0) ? "and hands ":"hands ") : "");
 
         sb.Append("\n to be \n");
-        // TODO
+
 
         sb.Append( (Mathf.Abs(makeSmell) == 2) ? "a lot ": "");
-        sb.Append((Mathf.Sign(makeSmell) == -1) ? "less smelly\n" : "more smelly\n");
+        sb.Append(((makeSmell) <= -1) ? "less smelly\n" : ((makeSmell >= 1) ? "more smelly\n" : ""));
         sb.Append((Mathf.Abs(grow) == 2) ? "a lot " : "");
-        sb.Append((Mathf.Sign(grow) == -1) ? "smaller\n" : "bigger\n");
+        sb.Append(((grow) <= -1) ? "smaller" : ((grow >= 1) ? "bigger\n" : ""));
         sb.Append((Mathf.Abs(alter) == 2) ? "a lot " : "");
-        sb.Append((Mathf.Sign(alter) == -1) ? "less colourful." : "more colourful.");
+        sb.Append(((alter) <= -1) ? "less colourful." : ((alter >= 1) ? "more colourful." : ""));
 
         return sb.ToString();
 

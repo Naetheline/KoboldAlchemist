@@ -98,25 +98,39 @@ public class ResultManager : MonoBehaviour
 
     private string AttributePotion(Ingredient potion)
     {
+
         StringBuilder sb = new StringBuilder();
-        sb.Append("It made my \n");
 
-        sb.Append((potion.Ear >= VictoryCondition.EFFECT) ? "ears " : "");
-        sb.Append((potion.Ear <= -VictoryCondition.EFFECT) ? "eyes " : "");
-        sb.Append((potion.Horn >= VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT) ? "and horns " : "horns ") : "");
-        sb.Append((potion.Horn <= -VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT) ? "and tail " : "tail ") : "");
-        sb.Append((potion.Feet >= VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT || potion.Horn >= VictoryCondition.EFFECT || potion.Horn <= -VictoryCondition.EFFECT ) ? "and feet " : "feet ") : "");
-        sb.Append((potion.Feet <= -VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT || potion.Horn >= VictoryCondition.EFFECT || potion.Horn <= -VictoryCondition.EFFECT) ? "and hands " : "hands ") : "");
+        if ( (Mathf.Abs(potion.Ear) < VictoryCondition.EFFECT &&
+              Mathf.Abs(potion.Feet) < VictoryCondition.EFFECT &&
+              Mathf.Abs(potion.Horn) < VictoryCondition.EFFECT)
+            || (Mathf.Abs(potion.MakeSmell) < VictoryCondition.EFFECT &&
+                Mathf.Abs(potion.Grow) < VictoryCondition.EFFECT &&
+                Mathf.Abs(potion.Alter) < VictoryCondition.EFFECT))
+        {
+            sb.Append("It did nothing at all !");
+        }
+        else
+        {
+            sb.Append("It made my \n");
 
-        sb.Append("\n");
+            sb.Append((potion.Ear >= VictoryCondition.EFFECT) ? "ears " : "");
+            sb.Append((potion.Ear <= -VictoryCondition.EFFECT) ? "eyes " : "");
+            sb.Append((potion.Horn >= VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT) ? "and horns " : "horns ") : "");
+            sb.Append((potion.Horn <= -VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT) ? "and tail " : "tail ") : "");
+            sb.Append((potion.Feet >= VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT || potion.Horn >= VictoryCondition.EFFECT || potion.Horn <= -VictoryCondition.EFFECT) ? "and feet " : "feet ") : "");
+            sb.Append((potion.Feet <= -VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT || potion.Horn >= VictoryCondition.EFFECT || potion.Horn <= -VictoryCondition.EFFECT) ? "and hands " : "hands ") : "");
 
-        sb.Append((Mathf.Abs(potion.MakeSmell) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
-        sb.Append( ((potion.MakeSmell) <= -VictoryCondition.EFFECT) ? "less smelly\n" :((potion.MakeSmell >= VictoryCondition.EFFECT)? "more smelly\n" : ""));
-        sb.Append((Mathf.Abs(potion.Grow) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
-        sb.Append((potion.Grow <= -VictoryCondition.EFFECT) ? "smaller\n" : ((potion.Grow >= VictoryCondition.EFFECT) ? "bigger\n" :""));
-        sb.Append((Mathf.Abs(potion.Alter) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
-        sb.Append((potion.Alter <= -VictoryCondition.EFFECT) ? "less colourful." : ((potion.Alter >= VictoryCondition.EFFECT) ? "more colourful." :""));
+            sb.Append("\n");
 
+            sb.Append((Mathf.Abs(potion.MakeSmell) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
+            sb.Append(((potion.MakeSmell) <= -VictoryCondition.EFFECT) ? "less smelly\n" : ((potion.MakeSmell >= VictoryCondition.EFFECT) ? "more smelly\n" : ""));
+            sb.Append((Mathf.Abs(potion.Grow) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
+            sb.Append((potion.Grow <= -VictoryCondition.EFFECT) ? "smaller\n" : ((potion.Grow >= VictoryCondition.EFFECT) ? "bigger\n" : ""));
+            sb.Append((Mathf.Abs(potion.Alter) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
+            sb.Append((potion.Alter <= -VictoryCondition.EFFECT) ? "less colourful." : ((potion.Alter >= VictoryCondition.EFFECT) ? "more colourful." : ""));
+
+        }
         return sb.ToString();
     }
 

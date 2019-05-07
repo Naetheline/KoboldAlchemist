@@ -3429,6 +3429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resultPanel: {fileID: 1308782155}
   textResult: {fileID: 191443979}
+  condPanel: {fileID: 125717610}
   textCondition: {fileID: 1029774005}
 --- !u!70 &1794511622
 CapsuleCollider2D:
