@@ -54,7 +54,7 @@ public class ResultManager : MonoBehaviour
         
         if(ear && horn && feet && makeSmell && grow && alter)
         {
-            textResult.text += "It worked, thank you !";
+            textResult.text = "It worked, thank you !";
 
             level++;
             if (level > NUMBER_LEVELS)
@@ -153,7 +153,7 @@ public class ResultManager : MonoBehaviour
         conditions[3] = new VictoryCondition(0, 1, 0, 0, 0, -1);
         conditions[4] = new VictoryCondition(-1, 0, 0, 0, 1, 1);
         conditions[5] = new VictoryCondition(0, -1, 0, 1, 0, 0);
-        conditions[6] = new VictoryCondition(-1, -1, 1, 0, 0, 2);
+        conditions[6] = new VictoryCondition(-1, -1, 0, 0, 0, 2);
         conditions[7] = new VictoryCondition(0, 0, -1, -1, 0, 0);
         conditions[8] = new VictoryCondition(0, 1, 0, 0, 0, -2);
         conditions[9] = new VictoryCondition(0, 0, 1, 0, -2, 0);
