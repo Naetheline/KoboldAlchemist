@@ -57,20 +57,20 @@ public class VictoryCondition
 
         sb.Append((ear == 1) ? "ears " : "");
         sb.Append((ear == -1) ? "eyes " : "");
-        sb.Append((horn == 1) ? "horns " : "");
-        sb.Append((horn == -1) ? "tail " : "");
-        sb.Append((feet == 1) ? "feet " : "");
-        sb.Append((feet == -1) ? "hands " : "");
+        sb.Append((horn == 1) ? ((ear != 0)? "and horns " :"horns ") : "");
+        sb.Append((horn == -1) ? ((ear != 0) ? "and tail " : "tail ") : "");
+        sb.Append((feet == 1) ? ((ear != 0 || horn != 0)?"and feet ":"feet ") : "");
+        sb.Append((feet == -1) ? ((ear != 0 || horn != 0) ? "and hands ":"hands ") : "");
 
         sb.Append("\n to be \n");
         // TODO
 
-        sb.Append( (Mathf.Abs(makeSmell) == 2) ? "a lot": "");
-        sb.Append((Mathf.Sign(makeSmell) == -1) ? "less smelly" : "more smelly");
-        sb.Append((Mathf.Abs(grow) == 2) ? "a lot" : "");
-        sb.Append((Mathf.Sign(grow) == -1) ? "smaller" : "bigger");
-        sb.Append((Mathf.Abs(alter) == 2) ? "a lot" : "");
-        sb.Append((Mathf.Sign(alter) == -1) ? "less colourful" : "more colourful");
+        sb.Append( (Mathf.Abs(makeSmell) == 2) ? "a lot ": "");
+        sb.Append((Mathf.Sign(makeSmell) == -1) ? "less smelly\n" : "more smelly\n");
+        sb.Append((Mathf.Abs(grow) == 2) ? "a lot " : "");
+        sb.Append((Mathf.Sign(grow) == -1) ? "smaller\n" : "bigger\n");
+        sb.Append((Mathf.Abs(alter) == 2) ? "a lot " : "");
+        sb.Append((Mathf.Sign(alter) == -1) ? "less colourful." : "more colourful.");
 
         return sb.ToString();
 

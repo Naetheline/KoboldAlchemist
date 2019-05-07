@@ -31,8 +31,6 @@ public class ResultManager : MonoBehaviour
             return;
         }
 
-        // TODO Wrtie text for the attribute check
-
         StringBuilder sb = new StringBuilder();
 
         bool ear = checkAttribut(condition.Ear, potion.Ear);
@@ -43,22 +41,11 @@ public class ResultManager : MonoBehaviour
         bool grow = checkAttribut(condition.Grow, potion.Grow);
         bool alter = checkAttribut(condition.Alter, potion.Alter);
 
-        sb.Append("Ears : " + ear);
-        sb.Append("\nHorns : " + horn);
-        sb.Append("\nFeet : " + feet);
-
-        sb.Append("\n\nMake smell : " + makeSmell );
-        sb.Append("\nGrow : " + grow);
-        sb.Append("\nAlter : " + alter );
-        sb.Append("\n\n");
-
-
-        textResult.text = sb.ToString() + potion.ToString();
+        //textResult.text = sb.ToString() + potion.ToString();
         
-
         if(ear && horn && feet && makeSmell && grow && alter)
         {
-            textResult.text += "\n\tVictory !";
+            textResult.text += "It worked, thank you !";
 
             // TODO 
             // Add some sort of score
@@ -66,6 +53,20 @@ public class ResultManager : MonoBehaviour
             condition = new VictoryCondition();
 
             textCondition.text = condition.ToString();
+        }
+        else
+        {
+            // TODO
+            // Find a way to words the results in a correct english sentence...
+            sb.Append("Ears : " + ear);
+            sb.Append("\nHorns : " + horn);
+            sb.Append("\nFeet : " + feet);
+
+            sb.Append("\n\nMake smell : " + makeSmell);
+            sb.Append("\nGrow : " + grow);
+            sb.Append("\nAlter : " + alter);
+            sb.Append("\n\n");
+
         }
 
 
@@ -89,5 +90,31 @@ public class ResultManager : MonoBehaviour
             case 2: return (potionAttribute >= VictoryCondition.STRONG_EFFECT);
             default: return false;
         }
+    }
+
+    private string AttributePotion(Ingredient potion)
+    {
+        StringBuilder sb = new StringBuilder();
+
+
+        sb.Append("It made my \n");
+
+        sb.Append((potion.Ear >= VictoryCondition.EFFECT) ? "ears " : "");
+        sb.Append((potion.Ear <= -VictoryCondition.EFFECT) ? "eyes " : "");
+        sb.Append((potion.Horn >= VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT) ? "and horns " : "horns ") : "");
+        sb.Append((potion.Horn <= -VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT) ? "and tail " : "tail ") : "");
+        sb.Append((potion.Feet >= VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT || potion.Horn >= VictoryCondition.EFFECT || potion.Horn <= -VictoryCondition.EFFECT ) ? "and feet " : "feet ") : "");
+        sb.Append((potion.Feet <= -VictoryCondition.EFFECT) ? ((potion.Ear >= VictoryCondition.EFFECT || potion.Ear <= -VictoryCondition.EFFECT || potion.Horn >= VictoryCondition.EFFECT || potion.Horn <= -VictoryCondition.EFFECT) ? "and hands " : "hands ") : "");
+
+        sb.Append("\n");
+
+        sb.Append((Mathf.Abs(potion.MakeSmell) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
+        sb.Append( ((potion.MakeSmell) <= -VictoryCondition.EFFECT) ? "less smelly\n" :((potion.MakeSmell >= VictoryCondition.EFFECT)? "more smelly\n" : ""));
+        sb.Append((Mathf.Abs(potion.Grow) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
+        sb.Append((potion.Grow <= -VictoryCondition.EFFECT) ? "smaller\n" : ((potion.Grow >= VictoryCondition.EFFECT) ? "bigger\n" :""));
+        sb.Append((Mathf.Abs(potion.Alter) >= VictoryCondition.STRONG_EFFECT) ? "a lot " : "");
+        sb.Append((potion.Alter <= -VictoryCondition.EFFECT) ? "less colourful." : ((potion.Alter >= VictoryCondition.EFFECT) ? "more colourful." :""));
+
+        return sb.ToString();
     }
 }
