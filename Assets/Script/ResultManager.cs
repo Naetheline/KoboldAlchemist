@@ -75,15 +75,15 @@ public class ResultManager : MonoBehaviour
         resultPanel.SetActive(false);
     }
 
-    private bool checkAttribut(float potionAttribute, int conditionAttribute)
+    private bool checkAttribut(int conditionAttribute, float potionAttribute)
     {
         switch (conditionAttribute)
         {
-            case -2: return potionAttribute <= -VictoryCondition.STRONG_EFFECT;
-            case -1: return potionAttribute <= -VictoryCondition.EFFECT && potionAttribute > -VictoryCondition.STRONG_EFFECT ;
-            case 0: return potionAttribute > -VictoryCondition.EFFECT && potionAttribute < VictoryCondition.EFFECT;
-            case 1: return potionAttribute >= VictoryCondition.EFFECT && potionAttribute < VictoryCondition.STRONG_EFFECT;
-            case 2: return potionAttribute >= VictoryCondition.STRONG_EFFECT;
+            case -2: return (potionAttribute <= -VictoryCondition.STRONG_EFFECT);
+            case -1: return (potionAttribute <= -VictoryCondition.EFFECT && potionAttribute > -VictoryCondition.STRONG_EFFECT) ;
+            case 0: return (potionAttribute > -VictoryCondition.EFFECT && potionAttribute < VictoryCondition.EFFECT);
+            case 1: return (potionAttribute >= VictoryCondition.EFFECT && potionAttribute < VictoryCondition.STRONG_EFFECT);
+            case 2: return (potionAttribute >= VictoryCondition.STRONG_EFFECT);
             default: return false;
         }
     }
