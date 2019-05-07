@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class VialControl : MonoBehaviour
 {
-    public const float ROTATION_THRESHOLD = 120f;
+    public const float ROTATION_THRESHOLD_MIN = 120f;
+    public const float ROTATION_THRESHOLD_MAX = 240f;
     private Ingredient currentIngredient;
     private SpriteRenderer vialSprite;
 
@@ -62,7 +63,7 @@ public class VialControl : MonoBehaviour
         
         transform.rotation = desiredRotation;
         
-        if(transform.eulerAngles.z >= ROTATION_THRESHOLD || transform.eulerAngles.z <= -ROTATION_THRESHOLD)
+        if(transform.eulerAngles.z >= ROTATION_THRESHOLD_MIN && transform.eulerAngles.z <= ROTATION_THRESHOLD_MAX)
         {
              Pour(); 
         }
@@ -94,13 +95,5 @@ public class VialControl : MonoBehaviour
         }
 
         this.clearIngredient();
-    }
-
-    // DEBUG
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position + Vector3.down, Vector3.down * 10 + transform.position);
     }
 }
