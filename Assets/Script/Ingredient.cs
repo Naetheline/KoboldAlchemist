@@ -19,11 +19,35 @@ public class Ingredient : System.Object
     }
 
     private int ear;
+    public int Ear
+    {
+        get { return ear; }
+    }
     private int horn;
+    public int Horn
+    {
+        get { return horn; }
+    }
     private int feet;
+    public int Feet
+    {
+        get { return feet; }
+    }
     private int makeSmell;
+    public int MakeSmell
+    {
+        get { return makeSmell; }
+    }
     private int grow;
+    public int Grow
+    {
+        get { return grow; }
+    }
     private int alter;
+    public int Alter
+    {
+        get { return alter; }
+    }
 
     private Color colour;
 
