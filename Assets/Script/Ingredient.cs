@@ -153,7 +153,7 @@ public class Ingredient : System.Object
 
     public float GlowIntensity()
     {
-        return (float)alter;
+        return ((float)alter) / 3f;
     }
 
     private void RandomizeColourIfWhite()
