@@ -148,14 +148,14 @@ public class ResultManager : MonoBehaviour
     private void GenerateVictoryConditions()
     {
         conditions[0] = new VictoryCondition(0, 0, 1, 0, -1, 0);
-        conditions[1] = new VictoryCondition(1, 0, 0, 0, 2, 0);
+        conditions[1] = new VictoryCondition(0, 0, 1, 0, -2, 0);
         conditions[2] = new VictoryCondition(0, 0, -1, -2, 0, 0);
         conditions[3] = new VictoryCondition(0, 1, 0, 0, 0, -1);
         conditions[4] = new VictoryCondition(-1, 0, 0, 0, 1, 1);
         conditions[5] = new VictoryCondition(0, -1, 0, 1, 0, 0);
         conditions[6] = new VictoryCondition(-1, -1, 0, 0, 0, 2);
         conditions[7] = new VictoryCondition(0, 0, -1, -1, 0, 0);
-        conditions[8] = new VictoryCondition(0, 1, 0, 0, 0, -2);
-        conditions[9] = new VictoryCondition(0, 0, 1, 0, -2, 0);
+        conditions[8] = new VictoryCondition(0, 1, 0, 0, 0, -2); 
+        conditions[9] = new VictoryCondition(1, 0, 0, 0, 2, 0);
     }
 }

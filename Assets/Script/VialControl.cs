@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class VialControl : MonoBehaviour
 {
@@ -8,11 +9,22 @@ public class VialControl : MonoBehaviour
     public const float ROTATION_THRESHOLD_MAX = 240f;
     private Ingredient currentIngredient;
     private SpriteRenderer vialSprite;
+    private Light2D glow;
 
     private void Start()
     {
         vialSprite = GetComponentInChildren<SpriteRenderer>();
         currentIngredient = null;
+        glow = GetComponentInChildren<Light2D>();
+        if(glow == null)
+        {
+            Debug.Log("Did not find the glow light");
+        }
+        else
+        {
+            glow.color = Color.black;
+            glow.intensity = 0;
+        }
     }
 
     public void setCurrentIngredient(Ingredient ingredient)
@@ -21,6 +33,11 @@ public class VialControl : MonoBehaviour
         {
             currentIngredient = ingredient;
             vialSprite.color = ingredient.GetColour();
+            if(ingredient.IsGlowing())
+            {
+                glow.color = ingredient.GetColour();
+                glow.intensity = ingredient.GlowIntensity();
+            }
         }
     }
 
@@ -33,6 +50,8 @@ public class VialControl : MonoBehaviour
     {
         currentIngredient = null;
         vialSprite.color = Color.white;
+        glow.color = Color.black;
+        glow.intensity = 0;
     }
     
     public bool isEmpty()

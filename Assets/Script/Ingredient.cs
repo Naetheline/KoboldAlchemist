@@ -146,6 +146,16 @@ public class Ingredient : System.Object
         return colour;
     }
 
+    public bool IsGlowing()
+    {
+        return (alter >= NAME_THRESHOLD);
+    }
+
+    public float GlowIntensity()
+    {
+        return (float)alter;
+    }
+
     private void RandomizeColourIfWhite()
     {
         while(colour.r >= 0.8f && colour.g >= 0.8f && colour.b >= 0.8f)
@@ -153,6 +163,7 @@ public class Ingredient : System.Object
             colour = Random.ColorHSV(0f, 1f, 0f, 0.8f, 0f, 1f);
         }
     }
+
 
     private void CheckExplosion()
     {
